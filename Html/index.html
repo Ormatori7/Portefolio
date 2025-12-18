@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Blender Artist</title>
+    <title>Portfolio</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
      <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- po avoir une icone de maison -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
     <link rel="stylesheet" href="../CSS/index.css">
 </head>
@@ -15,18 +17,22 @@
 
     <header>
         <div class="bandeau">
-            <img src="../image/0001.png" class="logo" alt="Logo">
+            <a href="#home">
+                <img src="../image/0001.png" class="logo" alt="Logo">
+            </a>
             <nav class="nav">
-                <li><a href="#project1">My projects</a></li>
                 <li><a href="#profile">My profile</a></li>
+                <li><a href="#project1">My projects</a></li>
+                
             </nav>
         </div>
     </header>
 
     <section id="home">
-        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+        <img class="MainBck" src="../image/bck2.png" alt="">
+        <!-- <video class="video-bg" autoplay loop muted playsinline preload="auto">
             <source src="../image/KeyboardLit.mp4" type="video/mp4">
-        </video>
+        </video> -->
 
         <div class="hero-content">
             <h1>Welcome</h1>
@@ -35,10 +41,11 @@
 
         <a href="#profile" class="scroll-down">
             <i class="fas fa-chevron-down"></i>
+                       
         </a>
     </section>
 
-    <section id="profile" style="background-color: #1a1a1a;">
+    <section id="profile" >
     
     <div class="profile-container">
         
@@ -47,9 +54,11 @@
                 <img src="../image/0001.png" alt="Photo de profil" class="profile-pic">
             </div>
             <h3>Antoine</h3>
-            <p class="role">Develloper and 3D Artist</p>
+            <p class="role">Develloper, 3D Artist and Game Develloper</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/antoine-moura-057a89387/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
                 <a href="#"><i class="fab fa-artstation"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
@@ -71,17 +80,34 @@
             </div>
 
             <div class="detail-block skills">
-                <h3><i class="fas fa-tools"></i> My skills</h3>
+                <h3><i class="fas fa-tools"></i>Dev Skills</h3>
+                <div class="skills-grid">
+                    <span class="skill-tag">Html/Css/Js</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">Macro VBA</span>
+                    <span class="skill-tag">Framework</span>
+                    <span class="skill-tag">Windows Server</span>
+                    <span class="skill-tag">Windows Client</span>
+                    <span class="skill-tag">Mysql</span>
+                    
+                    
+                   
+                    
+                </div>
+            </div>
+
+            <div class="detail-block skills">
+                <h3><i class="fas fa-tools"></i>3D Skills</h3>
                 <div class="skills-grid">
                     <span class="skill-tag">Blender</span>
-                    <span class="skill-tag">Maya</span>
                     <span class="skill-tag">Unreal Engine 5</span>
-                    <span class="skill-tag">ZBrush</span>
+                    <span class="skill-tag">Inkscape</span>
                 </div>
             </div>
 
             <div class="detail-block education">
-                <h3><i class="fas fa-graduation-cap"></i> Parcours</h3>
+                <h3><i class="fas fa-graduation-cap"></i> Academic Path</h3>
                 <div class="timeline-item">
                     <span class="date">2025 - Présent</span>
                     <h4>Bachelor Informatique</h4>
@@ -94,6 +120,7 @@
 
     <a href="#project1" class="scroll-down">
         <i class="fas fa-chevron-down"></i>
+        
     </a>
 
 </section>
@@ -140,6 +167,18 @@
         </a>
     </section>
 
+
+    <!-- pour button home -->
+    <a href="#home" class="glass-home-btn" title="Retour à l'accueil">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+    </a>
+
+    
+
+
     <script>
         // Script pour changer la couleur du header au scroll
         window.addEventListener("scroll", function () {
@@ -152,6 +191,8 @@
             }
         });
     </script>
+
+
 
 </body>
 </html>
