@@ -1,0 +1,237 @@
+/* --- VARIABLES PRO 3D ARTIST --- */
+:root {
+    --bg-color: #0d0e10;       /* Anthracite profond (Studio Dark) */
+    --neon-pink: #ffffff;      /* Blanc Pur (Accents pro et clairs) */
+    --neon-purple: #3b82f6;    /* Bleu Cobalt (Précision technique) */
+    --neon-blue: #94a3b8;      /* Acier brossé */
+    --text-color: #f1f5f9;     /* Blanc cassé pour la lisibilité */
+    --glass-bg: rgba(255, 255, 255, 0.03); /* Verre neutre très pur */
+}
+
+/* --- RESET ET BASE --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100vh;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --- HEADER --- */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 25px 50px;
+    transition: all 0.4s ease;
+}
+
+header.transparent {
+    background-color: rgba(13, 14, 16, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Bordure discrète */
+}
+
+.bandeau {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 45px;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.nav {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav li a {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #64748b; /* Gris ardoise */
+    transition: 0.3s;
+}
+
+.nav li a:hover {
+    color: var(--neon-pink);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* --- SECTIONS --- */
+section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+}
+
+/* --- ACCUEIL --- */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.35; /* Un peu plus sombre pour faire ressortir le blanc */
+    filter: saturate(1) brightness(0.8) contrast(1.1);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column; /* Aligne les éléments verticalement */
+    align-items: center;    /* Centre horizontalement */
+    justify-content: center; /* Centre verticalement si le parent a une hauteur */
+    text-align: center;     /* Assure que le texte lui-même est centré */
+    width: 100%;            /* Prend toute la largeur pour bien centrer */
+}
+
+
+.hero-content h1 {
+    font-size: 6rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+    /* Dégradé de métaux : Titane -> Acier */
+    background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.2));
+}
+
+.hero-content p {
+    /* ... vos autres styles pour p ... */
+    margin-top: 0; /* Réduit l'espace au-dessus de la phrase */
+    font-size: 1.2rem; /* Ajustez la taille si nécessaire */
+}
+
+/* --- LA BOX GLASSMORPHISM PRO --- */
+.box1 {
+    display: flex;
+    background: var(--glass-bg);
+    backdrop-filter: blur(25px) saturate(120%);
+    -webkit-backdrop-filter: blur(25px) saturate(120%);
+    
+    /* Bordure neutre et fine style UI logicielle */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.5),
+        0 0 10px rgba(255, 255, 255, 0.02); 
+
+    border-radius: 20px;
+    overflow: hidden;
+    width: 85%;
+    max-width: 1100px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.box1:hover {
+    transform: translateY(-10px) scale(1.01);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 40px 80px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+.column1 {
+    flex: 1.2;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--neon-pink);
+    text-shadow: none; /* Look plus propre */
+}
+
+.decription1 {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #94a3b8;
+}
+
+/* --- BOUTON PRO 3D --- */
+.refDetailKeyboard {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 35px;
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid #ffffff; /* Bordure blanche propre */
+    border-radius: 4px; 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: none;
+}
+
+.refDetailKeyboard:hover {
+    background: #ffffff;
+    color: #000000; /* Inversion de couleur pro */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* --- MEDIA --- */
+.Video1 {
+    flex: 1;
+    width: 50%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.05);
+    transition: 0.5s ease;
+}
+
+.box1:hover .Video1 {
+    filter: brightness(1.1);
+}
+
+/* --- FLÈCHE DE SCROLL PRO --- */
+.scroll-down {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    animation: bounce 2s infinite;
+    color: var(--neon-blue);
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); opacity: 0.5; }
+    50% { transform: translateX(-50%) translateY(15px); opacity: 1; }
+}

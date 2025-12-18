@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Blender Artist</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <!-- pour ajouter une police -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../CSS/index.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="bandeau">
+            <img src="../image/0001.png" class="logo" alt="Logo">
+            <nav class="nav">
+                <li><a href="#project1">My projects</a></li>
+                <li><a href="#profile">My profile</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <video class="video-bg" autoplay loop muted playsinline preload="auto">
+            <source src="../image/KeyboardLit.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>Welcome</h1>
+            <p>Discover my Portfolio</p>
+        </div>
+
+        <a href="#project1" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section id="project1">
+        <div class="box1">
+            <div class="column1">
+                <h2 class="title1">Modélisation Clavier</h2>
+                <p class="decription1">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus provident odio consequuntur totam.
+                </p>
+                <p>
+                    <a href="#keyboard" class="refDetailKeyboard">View details</a>
+                </p>
+            </div>
+            <video class="Video1" autoplay loop muted playsinline preload="auto">
+                <source src="../image/KeyboardLit.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <a href="#project2" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+    
+    <section id="project2">
+        <div class="box1">
+            <div class="column1">
+                <h2 class="title1">Modélisation d'un jeu</h2>
+                <p class="decription1">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus provident odio consequuntur totam.
+                </p>
+                <p>
+                    <a href="#keyboard" class="refDetailKeyboard">View details</a>
+                </p>
+            </div>
+            <video class="Video1" autoplay loop muted playsinline preload="auto">
+                <source src="../image/KeyboardLit.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <a href="#profile" class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <section id="profile" style="background-color: #1a1a1a;">
+        <div class="hero-content">
+            <h2 class="title1">My Profile</h2>
+            <p>Contact me for your projects.</p>
+        </div>
+        
+        <a href="#home" class="scroll-down" style="transform: rotate(180deg) translateX(50%);">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </section>
+
+    <script>
+        // Script pour changer la couleur du header au scroll
+        window.addEventListener("scroll", function () {
+            let header = document.querySelector("header");
+            // window.innerHeight correspond à la hauteur d'une section entière
+            if (window.scrollY > window.innerHeight - 100) { 
+                header.classList.add("transparent");
+            } else {
+                header.classList.remove("transparent");
+            }
+        });
+    </script>
+
+</body>
+</html>
