@@ -102,6 +102,11 @@ section {
     justify-content: center;
     align-items: center;
     scroll-snap-align: start;
+    
+}
+
+.project_dev{
+    background-color: rgb(0, 0, 0);
 }
 
 /* --- ACCUEIL --- */
