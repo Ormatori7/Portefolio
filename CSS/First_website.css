@@ -1,0 +1,125 @@
+/* Importation de ton root et base existante */
+:root {
+    --bg-color: #050505;
+    --accent-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Base styles (recopiés de tes pages précédentes) */
+body { background: var(--bg-color); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+
+.grid-background {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(var(--glass-border) 1px, transparent 1px),
+                      linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
+    background-size: 50px 50px; z-index: -1; opacity: 0.3;
+}
+
+/* --- LAYOUT --- */
+.project-container { max-width: 1200px; margin: 0 auto; padding: 2rem 5% 100px; }
+.project-header { text-align: center; margin-bottom: 4rem; }
+.project-title { font-size: 3.5rem; margin: 0; }
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    align-items: center;
+}
+
+.back-home {
+    color: var(--text-gray);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+
+.main-image {
+    /* 1. On laisse la boîte s'adapter à l'image */
+    width: fit-content;        /* La largeur s'ajuste à l'image */
+    height: auto;              /* La hauteur s'adapte automatiquement */
+    margin: 0 auto;            /* Centre la boîte horizontalement */
+
+    /* 2. On pose les "limites" pour ne pas envahir l'écran */
+    max-width: 90%;            /* Ne dépasse jamais 90% de la largeur de l'écran */
+    max-height: 70vh;          /* Ne dépasse jamais 70% de la hauteur de l'écran */
+
+    /* 3. Style visuel */
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--glass-bg); /* Optionnel : garde le fond si l'image charge mal */
+    border: 1px solid var(--glass-border);
+}
+
+.main-image img {
+    /* 4. L'image doit respecter les limites de sa boîte */
+    display: block;            /* Supprime l'espace vide sous l'image */
+    max-width: 100%;           /* L'image ne dépasse pas la boîte */
+    max-height: inherit;       /* L'image respecte le max-height du parent */
+    width: auto;               /* Garde les proportions d'origine */
+    height: auto;              /* Garde les proportions d'origine */
+    object-fit: contain;       /* S'assure que l'image est entière sans être coupée */
+}
+
+/* --- GLASS CARD & GALLERY --- */
+.glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+}
+
+.project-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    align-items: start;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px; /* Hauteur fixe pour les images de galerie pour l'alignement */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s;
+}
+
+.gallery-item:hover img { transform: scale(1.05); }
+
+/* --- CODE WINDOWS --- */
+.code-window { background: #0a0a0a; height: 100%; }
+.code-header { background: rgba(255,255,255,0.05); padding: 12px; display: flex; gap: 8px; }
+.code-header span { width: 10px; height: 10px; border-radius: 50%; background: var(--glass-border); }
+
+pre[class*="language-"] { margin: 0 !important; padding: 1.5rem !important; font-size: 0.9rem !important; }
+
+/* --- LABELS --- */
+.img-label {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-top: 1px solid var(--glass-border);
+}
+
+/* --- SIDEBAR --- */
+.project-content-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; margin: 4rem 0; }
+.specs-list { list-style: none; padding: 0; }
+.specs-list li { margin-bottom: 1rem; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem; }
+.specs-list strong { display: block; font-size: 0.7rem; opacity: 0.6; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .project-content-layout, .project-gallery { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Bot - Portfolio</title>
+    <link rel="stylesheet" href="../CSS/Bot_python.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="grid-background"></div>
+
+    <nav class="navbar">
+        <a href="Devproject.html" class="back-home">← BACK TO PROJECTS</a>
+        <div class="logo">PORTFOLIO</div>
+    </nav>
+
+    <main class="project-container">
+        
+        <header class="project-header">
+            <h1 class="project-title">Economy & RPG Bot</h1>
+            <p class="project-subtitle">Academic Challenge • 24H Development</p>
+        </header>
+
+        <section class="project-hero">
+            <div class="code-window glass-card">
+                <div class="code-header"><span></span><span></span><span></span></div>
+                <pre><code class="language-python">
+@tree_commands.command(name="help_weapon", description="Commands lists for the weapon system")
+async def help_weapon_command(interaction: discord.Interaction):
+    embed = discord.Embed(title="📚 Aide", color=discord.Color.teal())
+    embed.add_field(name="💰 /daily", value="Gagne 200 coins (toutes les minutes)", inline=False)
+    embed.add_field(name="🔨 /work", value="Travaille pour gagner des coins (toutes les 1h)", inline=False)
+    embed.add_field(name="👛 /wallet", value="Voir ton argent", inline=False)
+    embed.add_field(name="🔫 /generate", value=f"Achète une arme aléatoire (Coût: {PRIX_GENERATE} coins)", inline=False)
+    embed.add_field(name="🤝 /sell_last", value="Vend ta dernière arme pour récupérer de l'argent", inline=False)
+    embed.add_field(name="🎒 /show_collection", value="Affiche ton inventaire", inline=False)
+    # >>> Mise à jour de l'aide <<<
+    embed.add_field(name="🏆 /weapon-classement", value="Affiche le TOP 10 des collectionneurs", inline=False)
+    
+    await interaction.response.send_message(embed=embed)
+                </code></pre>
+            </div>
+        </section>
+
+        <div class="project-content-layout">
+            <div class="content-main-column">
+                <article class="text-block">
+                    <h2>Overview</h2>
+                    <p>Generated in <strong>24 hours</strong> as part of an academic sprint, this Discord bot features a comprehensive economy system and RPG-style inventory. The goal was to create smooth user interactions while managing a secure local database.</p>
+                </article>
+
+                <article class="text-block">
+                    <h3>Modular Architecture (Cogs)</h3>
+                    <p>Pour garantir la scalabilité, le bot utilise les <strong>Cogs</strong> de <code>discord.py</code>. Cela permet de séparer les commandes d'économie, de l'inventaire et des systèmes de combat.</p>
+                </article>
+
+                <article class="text-block">
+                    <h3>Data Persistence</h3>
+                    <p>Le stockage est géré via un fichier <strong>JSON</strong> structuré, permettant de conserver les pièces (coins) et les items de chaque utilisateur entre chaque redémarrage.</p>
+                </article>
+            </div>
+
+            <aside class="content-sidebar">
+                <div class="glass-card sidebar-info">
+                    <h3>Technical Stack</h3>
+                    <ul class="specs-list">
+                        <li><strong>Language</strong> Python 3.10+</li>
+                        <li><strong>Library</strong> Discord.py</li>
+                        <li><strong>Storage</strong> JSON / NoSQL logic</li>
+                        <li><strong>Features</strong> Economy, Inventory, RPG</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <section class="project-gallery">
+            
+            <div class="glass-card gallery-item">
+                <div class="code-window">
+                    <div class="code-header"><span></span><span></span><span></span></div>
+                    <pre><code class="language-python">
+# Command to show the inventory
+@tree_commands.command(name="show_collection")
+async def show_collection_command(interaction: discord.Interaction):
+    user_id = str(interaction.user.id)
+    # Check data and sorting logic
+    data = load_json_data()
+    inv = data[user_id]["inventory"]
+                    </code></pre>
+                </div>
+                <div class="img-label">UI: Weapon Commands to show collection</div>
+            </div>
+
+            <div class="glass-card gallery-item">
+                <div class="code-window">
+                    <div class="code-header"><span></span><span></span><span></span></div>
+                    <pre><code class="language-python">
+@tree_commands.command(name="daily", description="Récupère 200 pièces chaque minute")
+@app_commands.checks.cooldown(1, 60)
+async def daily_command(interaction: discord.Interaction):
+    user_id = str(interaction.user.id)
+    check_user_exists(user_id)
+
+    gain = 200
+    user_collections[user_id]["coins"] += gain
+    save_data()
+
+    embed = discord.Embed(title="💰 Salaire Rapide", description=f"Tu as reçu **{gain} coins** !\nNouveau solde : **{user_collections[user_id]['coins']}** 🪙", color=discord.Color.green())
+    await interaction.response.send_message(embed=embed)
+                    </code></pre>
+                </div>
+                <div class="img-label">LOGIC: DAILY COIN GENERATION</div>
+            </div>
+
+            <div class="glass-card gallery-item">
+                <div class="code-window">
+                    <div class="code-header"><span></span><span></span><span></span></div>
+                    <pre><code class="language-python">
+WEAPONS_LIST = [
+    {"nom": "AK-47", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/AK-47_type_II_Part_DM-ST-89-01131.jpg/1200px-AK-47_type_II_Part_DM-ST-89-01131.jpg"},
+    {"nom": "M4A1", "image": "https://upload.wikimedia.org/wikipedia/commons/4/44/M4A1_ACOG.jpg"},
+    {"nom": "Desert Eagle", "image": "https://upload.wikimedia.org/wikipedia/commons/5/54/Desert_Eagle_.50_AE.jpg"},
+    {"nom": "Katana Laser", "image": "https://i.pinimg.com/originals/4d/75/90/4d75909c95085631567307116075b175.jpg"},
+    {"nom": "Marteau de Guerre", "image": "https://cdna.artstation.com/p/assets/images/images/014/334/844/large/timothy-ferreira-warhammer-render01.jpg"},
+    {"nom": "Ray Gun Alien", "image": "https://static.wikia.nocookie.net/callofduty/images/1/19/Ray_Gun_BO4.png"},
+    {"nom": "Sabre Laser", "image": "https://lumiere-a.akamaihd.net/v1/images/skywalker-lightsaber-main_7b669382.jpeg"},
+]
+
+RARITIES = {
+    "Commun": 1,
+    "Rare": 2,
+    "Epique": 3,
+    "Légendaire": 4
+}
+                    </code></pre>
+                </div>
+                <div class="img-label">LOGIC: WEAPONS AND THEIR RARITIES</div>
+            </div>
+
+            <div class="glass-card gallery-item">
+                <div class="code-window">
+                    <div class="code-header"><span></span><span></span><span></span></div>
+                    <pre><code class="language-json">
+  "687695487196725288": {
+        "coins": 44,
+        "inventory": [
+            {
+                "name": "AK-47",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/AK-47_type_II_Part_DM-ST-89-01131.jpg/1200px-AK-47_type_II_Part_DM-ST-89-01131.jpg",
+                "rarity": "Epique",
+                "value": 3
+            },
+            {
+                "name": "AK-47",
+                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/AK-47_type_II_Part_DM-ST-89-01131.jpg/1200px-AK-47_type_II_Part_DM-ST-89-01131.jpg",
+                "rarity": "Rare",
+                "value": 2
+            }
+        ]
+    }
+
+                    </code></pre>
+                </div>
+                <div class="img-label">DATA: USER PERSISTENCE (JSON)</div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+</body>
+</html>
