@@ -11,89 +11,121 @@
     <div class="grid-background"></div>
 
     <nav class="navbar">
-        <a href="Devproject.html" class="back-home">← BACK TO PROJECTS</a>
+        <a href="Devproject.html">← BACK TO PROJECTS</a>
         <div class="logo">PORTFOLIO</div>
     </nav>
 
     <main class="project-container">
         
-        <header class="project-header">
-            <h1 class="project-title">Cyber Portfolio v2</h1>
-            <p class="project-subtitle">Full-Stack Development • Responsive Design</p>
+        <header>
+            <h1>First Website Design</h1>
+            <p>Web Development</p>
         </header>
 
-        <section class="project-hero">
-            <div class="main-image">
-                <img src="../image/FirstWebsiteBCK.png" alt="Full Website Preview">
-            </div>
+        <section class="hero">
+            <img src="../image/FirstWebsiteBCK.png" alt="Full Website Preview">
         </section>
 
-        <div class="project-content-layout">
-            <div class="content-main-column">
-                <article class="text-block">
-                    <h2>Concept & UI Design</h2>
-                    <p>
-                        This project represents my first major foray into web development, focusing on crafting a window of a website.
-                    </p>
-                </article>
+        <section class="content-layout">
+            <article>
+                <h2>Concept & UI Design</h2>
+                <p>This project represents my first major foray into web development, focusing on crafting a window of an travel agency website.</p>
+            </article>
 
-                <article class="text-block">
-                    <h3>Responsive Architecture</h3>
-                    <p>Utilisation de <strong>CSS Grid</strong> et de <strong>Flexbox</strong> pour garantir que l'interface s'adapte parfaitement, du smartphone à l'écran ultra-large.</p>
-                </article>
-            </div>
-
-            <aside class="content-sidebar">
-                <div class="glass-card sidebar-info">
-                    <h3>Technical Stack</h3>
-                    <ul class="specs-list">
-                        <li><strong>Frontend</strong> HTML5 / CSS3 / JS</li>
-                        <li><strong>Style</strong> Glassmorphism / Grid</li>
-                        <li><strong>Animations</strong> Framer Motion / CSS</li>
-
-                    </ul>
-                </div>
+            <aside class="glass-card">
+                <h3>Technical Stack</h3>
+                <ul>
+                    <li><strong>Frontend</strong> HTML5 / CSS3 / JS</li>
+                    <li><strong>Style</strong> Glassmorphism / Grid</li>
+                    <li><strong>Animations</strong> JS/CSS</li>
+                </ul>
             </aside>
-        </div>
+        </section>
 
-        <section class="project-gallery">
+        <section class="gallery">
             
-            <div class="glass-card gallery-item">
-                <img src="../image/nav-preview.png" alt="Navbar Preview">
-                <div class="img-label">UI: NAVIGATION INTERFACE</div>
-            </div>
+            <figure class="glass-card">
+                <img src="../image/img2Firstwebsite.png" alt="Navbar Preview">
+                <figcaption>UI: Country Selection</figcaption>
+            </figure>
 
-            <div class="glass-card gallery-item">
+            <figure class="glass-card">
+                <img src="../image/img3Firstwebsite.png" alt="Mobile View">
+                <figcaption>UI: Phone with information</figcaption>
+            </figure>
+
+            <div class="glass-card">
                 <div class="code-window">
                     <div class="code-header"><span></span><span></span><span></span></div>
                     <pre><code class="language-css">
-.navbar {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-}</code></pre>
+.ski{
+    width: 300px;    
+    background-image: url(../image/ski.jpg);
+    height: 500px;
+    border-radius: 30px;
+    margin-top: 20px;
+    background-size:cover;
+    background-position: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    transition:  1s ease;
+}
+
+.texte-ski{
+    font-size: 75px;
+    color: rgb(255, 255, 255);
+    text-align: center ;
+    transform: translateY(560%);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    
+
+}
+            </code></pre>
                 </div>
-                <div class="img-label">CODE: BLUR EFFECT LOGIC</div>
+                <div class="label">CSS: Hover Animation</div>
             </div>
 
-            <div class="glass-card gallery-item">
+            <div class="glass-card">
                 <div class="code-window">
                     <div class="code-header"><span></span><span></span><span></span></div>
-                    <pre><code class="language-javascript">
-// Smooth Scroll & Reveal
-window.addEventListener('scroll', () => {
-  const cards = document.querySelectorAll('.card');
-  // Intersection Observer logic...
-});</code></pre>
+                    <pre>
+                        <code class="language-javascript">
+document.addEventListener("DOMContentLoaded", function () {
+        const phoneLink = document.getElementById("click");
+        let isFond2 = true; // Variable pour alterner les fonds
+        let isApple = true; // Variable pour alterner les images
+
+        phoneLink.addEventListener("click", function (event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+
+            const phone = phoneLink.querySelector("img"); // Sélectionne l'image
+
+            if (phone.style.transform === "scale(2.3) rotate(-90deg) translateY(-200px)") {
+                phone.style.transform = "scale(1)"; // Réinitialise la taille
+                phone.src = "../image/apple.png"
+            } else {
+                phone.style.transform = "scale(2.3) rotate(-90deg) translateY(-200px)";
+                phone.src = "../image/apple2.png"
+                phone.style.backfaceVisibility = ''
+
+                setTimeout(() => {
+
+                    // Change l'image après la transition
+                    phone.src = isApple ? "../image/apple2.png" : "../image/apple.png";
+
+                    // isApple = !isApple; // Inverse l'état
+                }, 1); // Attendre la durée de la transition (1s)
+            }
+
+            phone.style.transition = "transform 1s ease"; // Animation fluide
+        });
+    });
+                    </code>
+                    </pre>
                 </div>
-                <div class="img-label">LOGIC: SCROLL REVEAL</div>
+                <div class="label">JS: Open the phone</div>
             </div>
 
-             <div class="glass-card gallery-item">
-                <img src="../image/mobile-view.png" alt="Mobile View">
-                <div class="img-label">UI: RESPONSIVE ADAPTATION</div>
-            </div>
 
         </section>
     </main>
@@ -101,4 +133,4 @@ window.addEventListener('scroll', () => {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
 </body>
-</html>
+</html> 

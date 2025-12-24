@@ -1,197 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    
+    <title>Portfolio | Antoine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- po avoir une icone de maison -->
-     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../CSS/index.css">
 </head>
-
 <body>
 
-    <header>
-        <div class="bandeau">
-            <a href="#home">
-                <img src="../image/0001.png" class="logo" alt="Logo">
-            </a>
-            <nav class="nav">
-                <li><a href="#profile">My profile</a></li>
-                <li><a href="#project_dev">My projects</a></li>
-                
-            </nav>
-        </div>
+    <video class="bg-video" autoplay loop muted playsinline>
+        <source src="../image/Back_VideoMain.webm" type="video/webm">
+    </video>
+
+    <header id="main-header">
+        <nav class="navbar">
+            <a href="#home"><img src="../image/0001.png" class="logo" alt="Logo"></a>
+            <ul class="nav-links">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#project-dev">Dev projects</a></li>
+                <li><a href="#project-3d">3D projects</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="home">
-        <!-- <img class="MainBck" src="../image/bck2.png" alt=""> -->
-        <video class="MainBck" autoplay loop muted playsinline preload="auto">
-            <source src="../image/Back_VideoMain.webm" type="video/mp4">
-        </video>
-
         <div class="hero-content">
             <h1>Welcome</h1>
             <p>Discover my Portfolio</p>
         </div>
-
-        <a href="#profile" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-                       
-        </a>
+        <a href="#profile" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </section>
 
-    <section id="profile" >
-    
-    <div class="profile-container">
-        
-        <div class="profile-card">
-            <div class="profile-img-box">
-                <img src="../image/0001.png" alt="Photo de profil" class="profile-pic">
-            </div>
-            <h3>Antoine</h3>
-            <p class="role">Develloper, 3D Artist and Game Develloper</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/antoine-moura-057a89387/" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://discordapp.com/users/1249482726667456572" target="_blank"><i class="fab fa-discord"></i></a>
-            </div>
+    <section id="profile">
+        <div class="glass-box profile-layout">
+            <aside class="profile-aside">
+                <div class="profile-img-wrapper">
+                    <img src="../image/0001.png" alt="Profile" class="profile-pic">
+                </div>
+                <h3>Antoine</h3>
+                <p class="accent-text">Developer, 3D Artist & Game Dev</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/antoine-moura-057a89387/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://discordapp.com/users/1249482726667456572" target="_blank"><i class="fab fa-discord"></i></a>
+                </div>
+            </aside>
+
+            <article class="profile-main">
+                <div class="detail-group">
+                    <h3><i class="fas fa-user"></i> About me</h3>
+                    <p>Passionate Developer and 3D Artist dedicated to crafting immersive digital experiences. I bridge the gap between code and art by blending software development with 3D modeling, texturing, and lighting to bring innovative concepts to life.</p>
+                </div>
+
+                <div class="detail-group">
+                    <h3><i class="fas fa-code"></i> Dev Skills</h3>
+                    <div class="tag-cloud">
+                        <span class="tag">HTML/CSS/JS</span><span class="tag">Python</span><span class="tag">C#</span>
+                        <span class="tag">Macro VBA</span><span class="tag">MySQL</span><span class="tag">Windows Server</span>
+                    </div>
+                </div>
+
+                <div class="detail-group">
+                    <h3><i class="fas fa-cube"></i> 3D Skills</h3>
+                    <div class="tag-cloud">
+                        <span class="tag tech">Blender</span><span class="tag tech">Unreal Engine 5</span><span class="tag tech">Inkscape</span>
+                    </div>
+                </div>
+
+                <div class="detail-group">
+                    <h3><i class="fas fa-graduation-cap"></i> Academic Path</h3>
+                    <div class="timeline-item">
+                        <span class="date">2025 - Présent</span>
+                        <h4>Bachelor Informatique</h4>
+                        <p>Sup-de-Vinci, Puteaux</p>
+                    </div>
+                </div>
+            </article>
         </div>
+        <a href="#project-dev" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+    </section>
 
-        <div class="profile-details">
-            
-            <div class="profile-header">
-                <h2 class="title1">My Profile</h2>
-                <div class="separator"></div>
+    <section id="project-dev">
+        <div class="glass-box project-card">
+            <div class="project-info">
+                <h2 class="title-main">Dev Projects</h2>
+                <p>Découvrez tous mes projets dans le domaine du développement logiciel et web.</p>
+                <a href="./Devproject.html" class="btn-outline">View Details</a>
             </div>
-
-            <div class="detail-block about">
-                <h3><i class="fas fa-user"></i> About me</h3>
-                <p>
-                    Passionné par la création 3D et les environnements immersifs. 
-                    J'aime donner vie à des concepts à travers la modélisation, le texturing et l'éclairage.
-                </p>
-            </div>
-
-            <div class="detail-block skills">
-                <h3><i class="fas fa-tools"></i>Dev Skills</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Html/Css/Js</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">C#</span>
-                    <span class="skill-tag">Macro VBA</span>
-                    <span class="skill-tag">Framework</span>
-                    <span class="skill-tag">Windows Server</span>
-                    <span class="skill-tag">Windows Client</span>
-                    <span class="skill-tag">Mysql</span>
-                    
-                    
-                   
-                    
-                </div>
-            </div>
-
-            <div class="detail-block skills">
-                <h3><i class="fas fa-tools"></i>3D Skills</h3>
-                <div class="skills-grid">
-                    <span class="skill-tag">Blender</span>
-                    <span class="skill-tag">Unreal Engine 5</span>
-                    <span class="skill-tag">Inkscape</span>
-                </div>
-            </div>
-
-            <div class="detail-block education">
-                <h3><i class="fas fa-graduation-cap"></i> Academic Path</h3>
-                <div class="timeline-item">
-                    <span class="date">2025 - Présent</span>
-                    <h4>Bachelor Informatique</h4>
-                    <p>Sup-de-Vinci, Puteaux</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <a href="#project_dev" class="scroll-down">
-        <i class="fas fa-chevron-down"></i>
-        
-    </a>
-
-</section>
-
-    <section class="project_dev" id="project_dev">
-        <div class="box1">
-            <div class="column1">
-                <h2 class="title1">Dev project</h2>
-                <p class="decription1">                    
-                    Here you can find all my projects in the field of development
-                </p>
-                <p>
-                    <a href="./Devproject.html" class="refDetailKeyboard">View details</a>
-                </p>
-            </div>
-            <video class="Video1" autoplay loop muted playsinline preload="auto">
+            <video class="project-vid" autoplay loop muted playsinline>
                 <source src="../image/KeyboardLit.mp4" type="video/mp4">
             </video>
         </div>
-
-        <a href="#project_3D" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+        <a href="#project-3d" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </section>
-    
-    <section id="project_3D">
-        <div class="box1">
-            <div class="column1">
-                <h2 class="title1">3D project</h2>
-                <p class="decription1">
-                   Here you can find all my projects in the field of 3D and Game devleopement
-                </p>
-                <p>
-                    <a href="../Html/3Dproject.html" class="refDetailKeyboard">View details</a>
-                </p>
+
+    <section id="project-3d">
+        <div class="glass-box project-card reverse">
+            <div class="project-info">
+                <h2 class="title-main">3D & Game Dev</h2>
+                <p>Mes créations d'environnements 3D et mes prototypes de jeux sous Unreal Engine 5.</p>
+                <a href="../Html/3Dproject.html" class="btn-outline">View Details</a>
             </div>
-            <video class="Video1" autoplay loop muted playsinline preload="auto">
+            <video class="project-vid" autoplay loop muted playsinline>
                 <source src="../image/KeyboardLit.mp4" type="video/mp4">
             </video>
         </div>
-
-        <a href="#home" class="scroll-down">
-            <i class="fas fa-chevron-down"></i>
-        </a>
+        <a href="#home" class="scroll-down"><i class="fas fa-chevron-up"></i></a>
     </section>
 
-
-    <!-- pour button home -->
-    <a href="#home" class="glass-home-btn" title="Retour à l'accueil">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-        </svg>
-    </a>
-
-    
-
+    <a href="#home" class="fixed-home-btn" title="Back to top"><i class="fas fa-home"></i></a>
 
     <script>
-        // Script pour changer la couleur du header au scroll
-        window.addEventListener("scroll", function () {
-            let header = document.querySelector("header");
-            // window.innerHeight correspond à la hauteur d'une section entière
-            if (window.scrollY > window.innerHeight - 100) { 
-                header.classList.add("transparent");
-            } else {
-                header.classList.remove("transparent");
-            }
+        // Gestion de la transparence du header au scroll
+        window.addEventListener("scroll", () => {
+            const header = document.getElementById("main-header");
+            header.classList.toggle("transparent", window.scrollY > 50);
         });
     </script>
-
-
-
 </body>
 </html>
