@@ -1,0 +1,171 @@
+/* --- VARIABLES & BASE --- */
+:root {
+    --bg-color: #030303;
+    --accent-fnaf: #ff4d4d;
+    --accent-cyan: #00fff2;
+    --text-gray: #a0a0a0;
+    --glass-bg: rgba(12, 12, 12, 0.95);
+    --glass-border: rgba(255, 77, 77, 0.2); 
+    --font-main: 'Inter', sans-serif;
+    --font-mono: 'Share Tech Mono', monospace;
+    /* Nouvelle variable pour une grille plus rouge */
+    --grid-red: rgba(255, 40, 40, 0.5);
+}
+
+body { 
+    background: var(--bg-color); 
+    color: #eeeeee; 
+    font-family: var(--font-main); 
+    margin: 0; 
+}
+
+/* --- BACKGROUND (MODIFIÉ : Grille rouge plus visible) --- */
+.grid-background {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        /* Utilisation de la couleur rouge plus prononcée */
+        linear-gradient(var(--grid-red) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-red) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: -1; 
+    opacity: 0.4; /* Opacité augmentée pour mieux voir le rouge */
+}
+
+/* --- NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.5rem 10%; 
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.portfolio-title { font-family: var(--font-mono); color: var(--accent-fnaf); text-transform: uppercase; letter-spacing: 2px; }
+
+.back-link { text-decoration: none; color: var(--text-gray); font-family: var(--font-mono); font-size: 0.8rem; transition: 0.3s; }
+.back-link:hover { color: white; text-shadow: 0 0 10px var(--accent-fnaf); }
+
+/* --- HEADER (MODIFIÉ : Plus d'espace) --- */
+header { 
+    text-align: center; 
+    margin: 6rem 0 5rem; /* Marges augmentées pour aérer */
+}
+
+.status-bar { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-fnaf); margin-bottom: 1rem; letter-spacing: 3px; }
+.status-bar .dot { display: inline-block; width: 6px; height: 6px; background: var(--accent-fnaf); border-radius: 50%; margin-right: 8px; animation: blink 1s infinite; }
+
+.glitch-text { 
+    font-family: var(--font-mono);
+    font-size: clamp(2rem, 8vw, 4.5rem);
+    margin: 0; 
+    letter-spacing: 8px;
+    text-shadow: 3px 0 var(--accent-fnaf), -3px 0 var(--accent-cyan);
+}
+
+.subtitle { color: var(--text-gray); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 2px; opacity: 0.7; }
+
+/* --- HERO MONITOR (MODIFIÉ : Image plus petite) --- */
+.hero.main-monitor {
+    position: relative;
+    width: fit-content;
+    max-width: 700px; /* Largeur maximale réduite pour la rendre plus petite */
+    margin: 0 auto 7rem; /* Marge du bas augmentée pour aérer */
+    border: 1px solid var(--accent-fnaf);
+    box-shadow: 0 0 40px rgba(255, 77, 77, 0.1);
+}
+
+.hero img { display: block; max-width: 100%; height: auto; }
+
+.cam-info { position: absolute; top: 15px; left: 15px; font-family: var(--font-mono); font-size: 0.8rem; color: white; background: rgba(0,0,0,0.6); padding: 4px 10px; }
+.rec-icon { position: absolute; top: 15px; right: 15px; font-family: var(--font-mono); color: var(--accent-fnaf); font-weight: bold; }
+.rec-icon::before { content: "●"; margin-right: 8px; animation: blink 1s infinite; }
+
+/* --- CONTENT LAYOUT (MODIFIÉ : Plus d'espace entre les colonnes) --- */
+.content-layout { 
+    display: grid; 
+    grid-template-columns: 2.2fr 1fr; 
+    gap: 5rem; /* Espace entre les colonnes augmenté */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 120px;
+}
+
+.terminal-header { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-gray); margin-bottom: 0.5rem; opacity: 0.5; }
+
+.bio-card { 
+    padding: 2.5rem; /* Padding augmenté */
+    margin-bottom: 4rem; /* Marge augmentée */
+    line-height: 1.8; /* Interligne augmenté pour la lisibilité */
+    border-left: 4px solid var(--accent-fnaf); 
+}
+
+/* --- GALLERY (MODIFIÉ : Plus d'espace entre les cartes) --- */
+.gallery { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 4rem; /* Espace entre les cartes augmenté */
+}
+
+.glass-card { 
+    background: var(--glass-bg); 
+    border: 1px solid var(--glass-border); 
+    width: fit-content;
+    display: table;
+}
+
+.card-image-grid { display: flex; position: relative; border-bottom: 1px solid var(--glass-border); }
+
+/* --- IMAGES DE LA GALERIE (MODIFIÉ : Images entières non coupées) --- */
+.card-image-grid img { 
+    width: clamp(200px, 25vw, 400px);
+    height: auto; /* La hauteur s'adapte automatiquement */
+    object-fit: contain; /* L'image entière est visible, sans être coupée */
+    transition: 0.4s;
+    background-color: black; /* Fond noir si le ratio de l'image laisse des vides */
+}
+
+.card-image-grid img:hover { filter: contrast(120%) brightness(1.2); }
+
+.grid-label { 
+    position: absolute; bottom: 0; left: 0; width: 100%; 
+    background: rgba(0,0,0,0.8); color: var(--accent-fnaf); 
+    font-family: var(--font-mono); font-size: 0.65rem; padding: 10px; 
+}
+
+.card-body { padding: 2rem; /* Padding augmenté */ }
+.card-body h3 { font-family: var(--font-mono); font-size: 1rem; color: white; margin: 0 0 1rem 0; text-transform: uppercase; letter-spacing: 1px; }
+.card-body p { font-size: 0.9rem; color: var(--text-gray); margin: 0; line-height: 1.6; }
+
+/* --- SIDEBAR DIAGNOSTICS --- */
+.sidebar-terminal { position: sticky; top: 40px; } /* Changé 'height: sticky' (invalide) en 'position: sticky' et augmenté le top */
+
+.diagnostics { padding: 2rem; border-top: 4px solid var(--accent-fnaf); }
+.diagnostics h3 { font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
+
+.specs-list { list-style: none; padding: 0; }
+.specs-list li { margin-bottom: 1.5rem; }
+.specs-list strong { display: block; font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-fnaf); margin-bottom: 8px; letter-spacing: 1px; }
+.specs-list span { font-size: 0.85rem; color: #ddd; }
+.status-ok { color: #00ff88 !important; font-weight: bold; letter-spacing: 1px; }
+
+/* --- ANIMATIONS --- */
+@keyframes blink { 50% { opacity: 0; } }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1000px) {
+    .content-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .card-image-grid { flex-direction: column; }
+    .card-image-grid img { width: 100%; max-width: none; }
+    .hero.main-monitor { max-width: 100%; }
+}
+
+/* Bouton Home Style */
+.bottom-nav { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
+.home-btn { 
+    display: flex; padding: 12px; background: var(--glass-bg); 
+    border: 1px solid var(--accent-fnaf); border-radius: 50%; 
+    color: white; transition: 0.3s; 
+}
+.home-btn:hover { background: var(--accent-fnaf); transform: scale(1.1); box-shadow: 0 0 20px var(--accent-fnaf); }
