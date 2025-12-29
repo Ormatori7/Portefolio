@@ -1,0 +1,412 @@
+/* --- CONFIGURATION & VARIABLES --- */
+:root {
+    --halloween-orange: #ff6600;
+    --grid-color: rgba(255, 102, 0, 0.07); 
+    --glass-white: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 102, 0, 0.2);
+    color-scheme: dark;
+}
+
+body {
+    background-color: #050505 !important;
+    color: #ffffff;
+    font-family: 'Share Tech Mono', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- FOND ANIMÉ HALLOWEEN --- */
+@keyframes gridScroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 60px; }
+}
+
+.halloween-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 95%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 95%);
+    animation: gridScroll 15s linear infinite;
+}
+
+/* --- NAVIGATION STYLISÉE --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.portfolio-title {
+    color: var(--halloween-orange);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background: rgba(255, 102, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.back-link .arrow {
+    color: var(--halloween-orange);
+    transition: transform 0.3s ease;
+}
+
+.back-link:hover {
+    background: rgba(255, 102, 0, 0.15);
+    border-color: var(--halloween-orange);
+    box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
+    color: var(--halloween-orange);
+}
+
+.back-link:hover .arrow {
+    transform: translateX(-5px);
+}
+
+/* --- LAYOUT GLOBAL --- */
+.project-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 60px; /* Réduit un peu pour rapprocher l'image */
+}
+
+.status-tag {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    margin: 0 5px;
+    color: var(--halloween-orange);
+}
+
+.pulse {
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.3; }
+}
+
+.glitch-text {
+    font-size: 4rem;
+    margin: 20px 0 10px 0;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+.engine-subtitle {
+    letter-spacing: 5px;
+    color: var(--halloween-orange);
+    opacity: 0.8;
+}
+
+/* --- SECTION HERO (IMAGE PRINCIPALE) --- */
+/* C'est ici que l'on centre et encadre la première image */
+.hero-section {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    margin-bottom: 100px; /* Espace sous l'image */
+}
+
+.monitor-frame {
+    /* La "boîte" autour de l'image */
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Largeur max pour qu'elle soit plus petite que le conteneur principal */
+    padding: 15px; /* Espace entre l'image et le bord de la boîte */
+    background: var(--glass-white);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(255, 102, 0, 0.1); /* Légère lueur orange */
+}
+
+.main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    opacity: 0.85; /* Légèrement transparent pour l'effet écran */
+    border: 1px solid rgba(255, 102, 0, 0.1);
+}
+
+/* Style pour les overlays (REC, CAM_00) si présents dans le HTML */
+.monitor-overlay {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--halloween-orange);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    z-index: 10;
+    pointer-events: none; /* Pour cliquer au travers */
+}
+
+.rec-dot {
+    animation: blink 1s steps(1) infinite; /* Clignotement sec pour le REC */
+    color: red;
+    text-shadow: 0 0 5px red;
+}
+
+/* --- GRILLE DE CONTENU --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 60px;
+    align-items: start;
+}
+
+.section-label {
+    font-size: 0.75rem;
+    color: var(--halloween-orange);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+/* --- CARTES GLASSMORPHISM --- */
+.glass-card {
+    background: var(--glass-white);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--border-color);
+    padding: 35px;
+    border-radius: 8px;
+    line-height: 1.8;
+    color: #ddd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.mechanics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+.tech-card {
+    padding: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--halloween-orange);
+    box-shadow: 0 5px 20px rgba(255, 102, 0, 0.2);
+}
+
+.card-header {
+    position: relative;
+    height: 200px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.card-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.tech-card:hover .card-header img {
+    opacity: 0.9; /* L'image s'éclaire au survol */
+}
+
+.card-tag {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    font-size: 0.6rem;
+    padding: 4px 8px;
+    border: 1px solid var(--border-color);
+    color: var(--halloween-orange);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+.card-body h3 {
+    margin: 0 0 12px 0;
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+/* --- SIDEBAR DIAGNOSTICS --- */
+.specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.specs-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 102, 0, 0.1);
+    font-size: 0.85rem;
+}
+
+.specs-list li span {
+    color: var(--halloween-orange);
+}
+
+.ok-text {
+    color: #00ff00 !important;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+}
+
+
+
+
+
+/* =========================================
+   NOUVELLE SECTION : CARROUSEL HALLOWEEN
+   ========================================= */
+
+.carousel-section {
+    margin-top: 100px; /* Espace massif avant le carrousel */
+    /* Force le carrousel à ne pas dépasser la largeur du conteneur principal */
+    max-width: 100%; 
+}
+
+/* Conteneur principal Glassmorphism */
+.carousel-container {
+    padding: 20px; /* Padding interne plus petit que les autres cartes */
+}
+
+/* Zone de visualisation (contient images + boutons) */
+.carousel-viewer {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    overflow: hidden; /* Cache les images qui dépassent */
+}
+
+/* Le "rail" qui contient toutes les images côte à côte */
+.carousel-track-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animation fluide "tech" */
+}
+
+.carousel-slide {
+    min-width: 100%; /* Chaque image prend 100% de la largeur visible */
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto; /* Hauteur adaptative, ou fixe (ex: 500px) si tes images ont toutes la même taille */
+    max-height: 600px; /* Limite la hauteur pour ne pas casser la page */
+    object-fit: cover; /* Remplit le cadre sans déformer */
+    display: block;
+    opacity: 0.8; /* Légèrement sombre par défaut */
+    transition: opacity 0.5s;
+}
+
+/* L'image active est plus lumineuse */
+/* Note: Le JS ne gère pas cette classe pour l'instant pour rester simple, 
+   mais l'opacité de base 0.8 donne déjà un bon look */
+
+/* --- BOUTONS DE NAVIGATION TECH --- */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--halloween-orange);
+    border: 1px solid var(--border-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    padding: 15px 10px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.btn-left {
+    left: 0;
+    border-radius: 0 4px 4px 0;
+    border-left: none;
+}
+
+.btn-right {
+    right: 0;
+    border-radius: 4px 0 0 4px;
+    border-right: none;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 102, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 102, 0, 0.4);
+}
+
+/* --- DESCRIPTION SOUS LE CARROUSEL --- */
+.carousel-caption-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.carousel-caption-box h3 {
+    color: var(--halloween-orange);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+}
+
+.carousel-caption-box p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}

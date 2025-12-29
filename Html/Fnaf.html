@@ -8,100 +8,281 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-
-    <div class="grid-background"></div>
+    <div class="fnaf-bg"></div>
 
     <nav>
-        <span class="portfolio-title">System Console v5.4</span>
-        <a href="3d-projects.html" class="back-link">
+        <span class="portfolio-title">Fazbear_Console v5.4</span>
+        <a href="../Html/3Dproject.html" class="back-link">
             <span class="arrow">←</span> 3D PROJECTS
         </a>
     </nav>
 
     <main class="project-container">
-        <header>
-            <div class="status-bar">
-                <span class="dot"></span> LIVE FEED - ENCRYPTED
+        <header class="main-header">
+            <div class="status-wrapper">
+                <span class="status-tag">SECURITY_FEED</span>
+                <span class="status-tag pulse">ENCRYPTED</span>
             </div>
             <h1 class="glitch-text" data-text="FNaF REMAKE">FNaF REMAKE</h1>
-            <p class="subtitle">DEALING WITH THE PAST • UNREAL ENGINE 5.4</p>
+            <p class="engine-subtitle">UNREAL ENGINE 5.4 // FAITHFUL RECREATION</p>
         </header>
 
-        <div class="hero main-monitor">
-            <div class="cam-info">CAM_01: MAIN_MENU</div>
-            <img src="../image/fnaf/MainMenuFnaf.png" alt="FNaF Remake Preview">
-            <div class="rec-icon">REC</div>
-        </div>
+        <section class="hero-section">
+            <div class="monitor-frame">
+                <div class="monitor-overlay">
+                    <span>CAM_01 // MAIN_MENU</span>
+                    <span class="rec-dot">● REC</span>
+                </div>
+                <img src="../image/fnaf/freddy.png" alt="FNaF Remake Preview" class="main-img">
+            </div>
+        </section>
 
-        <div class="content-layout">
-            <section class="description-text">
-                <div class="terminal-header">PROJECT_LOG.txt</div>
-                <div class="glass-card bio-card">
-                    <p>
-                        Ce projet est un remake fidèle de la première version de <strong>Five Nights at Freddy's</strong>. 
-                        L'objectif était de recréer l'angoisse oppressante du bureau de sécurité en développant un système d'IA 
-                        imprévisible et un environnement ultra-détaillé fidèle à l'œuvre originale.
-                    </p>
+        <div class="content-grid">
+            <section class="main-content">
+                <div class="content-block">
+                    <h2 class="section-label">PROJECT_LOG.txt</h2>
+                    <div class="glass-card description-card">
+                        <p>
+                           This project is a <strong>faithful remake</strong> of the original Five Nights at Freddy's. The primary objective was to recreate the oppressive atmosphere of the security office by engineering an unpredictable AI system and a high-fidelity environment.
+                        </p>
+                        <p>
+                            Developed in two weeks, this solo project encompassed every aspect of animatronics to programming core gameplay mechanics, excets for 3D modelling, using Unreal Engine's Blueprints.
+                        </p>
+                        <p>
+                           The mission: survive the night shift from 12 AM to 6 AM for five consecutive nights while managing critical power resources.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="gallery">
-                    <div class="glass-card cctv-block">
-                        <div class="card-image-grid">
-                            <img src="../image/fnaf/MainStagefnaf.png" alt="scene image">
-                            <img src="../image/fnaf/BonnyCloseCam.png" alt="bonny">
-                            <div class="grid-label">AI_LOG: NEURAL_NETWORK_ACTIVE</div>
+                <h2 class="section-label">CORE_MECHANICS</h2>
+                <div class="mechanics-grid">
+                    <article class="glass-card tech-card">
+                        <div class="card-header">
+                            <img src="../image/fnaf/MainStagefnaf.png" alt="Modular AI">
+                            
                         </div>
                         <div class="card-body">
                             <h3>Modular AI System</h3>
-                            <p>Système de "State Machine" complexe : chaque animatronique possède son propre niveau d'agressivité et des patterns de déplacement uniques.</p>
+                            <p>Actor-based AI logic ensuring relentless animatronic movement and dynamic pathfinding based on actor points.</p>
                         </div>
-                    </div>
+                    </article>
 
-                    <div class="glass-card cctv-block">
-                        <div class="card-image-grid">
-                            <img src="../image/fnaf/lightFnaf.png" alt="light">
-                            <img src="../image/fnaf/DoorFnaf.png" alt="door">
-                            <div class="grid-label">PWR_MGMT: VOLTAGE_STABLE</div>
+                    <article class="glass-card tech-card">
+                        <div class="card-header">
+                            <img src="../image/fnaf/lightFnaf.png" alt="Survival Mechanics">
+                            
                         </div>
                         <div class="card-body">
                             <h3>Survival Mechanics</h3>
-                            <p>Gestion précise des ressources : lumières, portes et tablettes consomment une énergie limitée, forçant des choix stratégiques tendus.</p>
+                            <p>Resource-based gameplay where every action (lights, doors, CCTV) drains a limited power supply, leaving the player vulnerable.</p>
                         </div>
-                    </div>
+                    </article>
+                    
+                    <article class="glass-card tech-card">
+                        <div class="card-header">
+                            <img src="../image/fnaf/Awake.png" alt="awakeImage">
+                            
+                        </div>
+                        <div class="card-body">
+                            <h3>Ik Head System</h3>
+                            <p>Animatronics utilize an IK (Inverse Kinematics) system to procedurally track the player's camera after a predefined delay, increasing the sense of unease</p>
+                        </div>
+                    </article>
+
+                    <article class="glass-card tech-card">
+                        <div class="card-header">
+                            <img src="../image/fnaf/BonnyCloseCam.png" alt="closecam">
+                            
+                        </div>
+                        <div class="card-body">
+                            <h3>Ai Path</h3>
+                            <p>As the hours pass, the animatronics grow increasingly aggressive, stalking through the shadows of the facility. They will attempt to breach your office by any means necessary—keep a watchful eye on every sector, or face the consequences of a security failure...</p>
+                        </div>
+                    </article>
+
+                    
                 </div>
             </section>
 
-            <aside class="sidebar-terminal">
-                <div class="glass-card diagnostics">
-                    <h3>SYSTEM DIAGNOSTICS</h3>
+            <aside class="sidebar">
+                <h2 class="section-label">SYSTEM_DIAGNOSTICS</h2>
+                <div class="glass-card diagnostics-card">
                     <ul class="specs-list">
-                        <li>
-                            <strong>CORE_ENGINE</strong>
-                            <span>Unreal Engine 5.4</span>
-                        </li>
-                        <li>
-                            <strong>INPUT_LANGUAGE</strong>
-                            <span>C++ / Blueprints</span>
-                        </li>
-                        <li>
-                            <strong>SUBSYSTEMS</strong>
-                            <span>CCTV, Adaptive AI, Power Grid, Dynamic Jumpscares</span>
-                        </li>
-                        <li>
-                            <strong>STATUS</strong>
-                            <span class="status-ok">OPERATIONAL</span>
-                        </li>
+                        <li><strong>CORE_ENGINE</strong> <span>UE 5.4</span></li>
+                        <li><strong>INPUT</strong> <span>C++ / Blueprints</span></li>
+                        <li><strong>SUBSYSTEMS</strong> <span>CCTV, AI, POWER</span></li>
+                        <li><strong>Time spend</strong> <span>2 weeks</span></li>
+                        <li><strong>STATUS</strong> <span class="ok-text">OPERATIONAL</span></li>
                     </ul>
                 </div>
             </aside>
         </div>
+
+        <section class="carousel-section">
+            <h2 class="section-label">THE_MAP.img // [12_RECORDS_FOUND]</h2>
+            
+            <div class="glass-card carousel-container">
+                <div class="carousel-viewer">
+                    <button class="carousel-btn btn-left">←</button>
+                    
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/MainStagefnaf.png" alt="Archive 1">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/partyRoom.png" alt="Archive 2">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/piratecurtain.png" alt="Archive 3">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/maintenance.png" alt="Archive 4">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/restrooms.png" alt="Archive 5">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/kitchen.png" alt="Archive 6">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/RightHallway.png" alt="Archive 7">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/RightCorner.png" alt="Archive 8">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/lefthallway.png" alt="Archive 9">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/storage.png" alt="Archive 10">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/LeftCorner.png" alt="Archive 11">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/office.png" alt="Archive 12">
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button class="carousel-btn btn-right">→</button>
+                </div>
+                
+                <div class="carousel-caption-box">
+                    <h3 class="caption-title">MAP_01: Main Stage</h3>
+                    <p></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="carousel-section">
+            <h2 class="section-label">Main_Menu.img // [4_RECORDS_FOUND]</h2>
+            
+            <div class="glass-card carousel-container">
+                <div class="carousel-viewer">
+                    <button class="carousel-btn btn-left">←</button>
+                    
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/freddy.png" alt="Archive 1">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/foxy.png" alt="Archive 2">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/chica.png" alt="Archive 3">
+                            </li>
+                            <li class="carousel-slide">
+                                <img src="../image/fnaf/MainMenuFnaf.png" alt="Archive 4">
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <button class="carousel-btn btn-right">→</button>
+                </div>
+                
+                <div class="carousel-caption-box">
+                    <h3 class="caption-title">FILE_01: Freddy</h3>
+                    
+                </div>
+            </div>
+        </section>
     </main>
 
-    <div class="bottom-nav">
-        <a href="index.html" class="home-btn">
-            <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-        </a>
-    </div>
+    <script>
+    // 1. On définit les données pour chaque carrousel
+    const allCarouselData = [
+        {
+            // Données du premier carrousel (THE_MAP)
+            captions: [
+                { title: "MAP_01: Main Stage" },
+                { title: "MAP_02: Party Room" },
+                { title: "MAP_03: Pirate Cove" },
+                { title: "MAP_04: Maintenance" },
+                { title: "MAP_05: Restrooms" },
+                { title: "MAP_06: Kitchen" },
+                { title: "MAP_07: Right Hallway"},
+                { title: "MAP_08: Right Corner" },
+                { title: "MAP_09: Left Hallway"},
+                { title: "MAP_10: Storage" },
+                { title: "MAP_11: Left Corner" },
+                { title: "MAP_12: Office" }
+            ]
+        },
+        {
+            // Données du deuxième carrousel (SECURITY_ARCHIVE)
+            captions: [
+                { title: "FILE_01: Freddy" },
+                { title: "FILE_02: Foxy" },
+                { title: "FILE_03: Chica" },
+                { title: "FILE_04: Bonnie" }
+            ]
+        }
+    ];
 
+    // 2. On sélectionne tous les conteneurs de carrousel
+    const carousels = document.querySelectorAll('.carousel-container');
+
+    carousels.forEach((carousel, index) => {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const nextButton = carousel.querySelector('.btn-right');
+        const prevButton = carousel.querySelector('.btn-left');
+        const captionTitle = carousel.querySelector('.caption-title');
+        const captionText = carousel.querySelector('.caption-text');
+        
+        let currentIndex = 0;
+        const currentData = allCarouselData[index].captions;
+
+        const updatePosition = () => {
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            track.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+            
+            // On met à jour le texte correspondant à ce carrousel précis
+            if (currentData[currentIndex]) {
+                captionTitle.textContent = currentData[currentIndex].title;
+                captionText.textContent = currentData[currentIndex].text;
+            }
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updatePosition();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updatePosition();
+        });
+
+        // Gérer le redimensionnement de la fenêtre pour chaque carrousel
+        window.addEventListener('resize', updatePosition);
+    });
+</script>
+
+
+    
 </body>
 </html>

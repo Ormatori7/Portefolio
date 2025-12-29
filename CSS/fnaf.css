@@ -1,171 +1,227 @@
-/* --- VARIABLES & BASE --- */
+/* --- CONFIGURATION & VARIABLES --- */
 :root {
-    --bg-color: #030303;
-    --accent-fnaf: #ff4d4d;
+    --accent-fnaf: #ff4d4d; /* Rouge Fazbear */
     --accent-cyan: #00fff2;
-    --text-gray: #a0a0a0;
-    --glass-bg: rgba(12, 12, 12, 0.95);
-    --glass-border: rgba(255, 77, 77, 0.2); 
-    --font-main: 'Inter', sans-serif;
-    --font-mono: 'Share Tech Mono', monospace;
-    /* Nouvelle variable pour une grille plus rouge */
-    --grid-red: rgba(255, 40, 40, 0.5);
+    --grid-color: rgba(255, 77, 77, 0.08); 
+    --glass-white: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 77, 77, 0.2);
+    color-scheme: dark;
 }
 
-body { 
-    background: var(--bg-color); 
-    color: #eeeeee; 
-    font-family: var(--font-main); 
-    margin: 0; 
+body {
+    background-color: #030303 !important; /* */
+    color: #eeeeee;
+    font-family: 'Share Tech Mono', monospace;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-/* --- BACKGROUND (MODIFIÉ : Grille rouge plus visible) --- */
-.grid-background {
+/* --- FOND ANIMÉ (GRID SCROLL) --- */
+@keyframes gridScroll {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 60px; }
+}
+
+.fnaf-bg {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
     background-image: 
-        /* Utilisation de la couleur rouge plus prononcée */
-        linear-gradient(var(--grid-red) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-red) 1px, transparent 1px);
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
     background-size: 60px 60px;
-    z-index: -1; 
-    opacity: 0.4; /* Opacité augmentée pour mieux voir le rouge */
+    mask-image: radial-gradient(circle at center, black 30%, transparent 95%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 95%);
+    animation: gridScroll 20s linear infinite;
 }
 
-/* --- NAVIGATION --- */
+/* --- NAVIGATION STYLISÉE --- */
 nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.5rem 10%; 
-    align-items: center;
-    border-bottom: 1px solid var(--glass-border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 8%;
     background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 100;
 }
 
-.portfolio-title { font-family: var(--font-mono); color: var(--accent-fnaf); text-transform: uppercase; letter-spacing: 2px; }
+.portfolio-title { color: var(--accent-fnaf); letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; }
 
-.back-link { text-decoration: none; color: var(--text-gray); font-family: var(--font-mono); font-size: 0.8rem; transition: 0.3s; }
-.back-link:hover { color: white; text-shadow: 0 0 10px var(--accent-fnaf); }
-
-/* --- HEADER (MODIFIÉ : Plus d'espace) --- */
-header { 
-    text-align: center; 
-    margin: 6rem 0 5rem; /* Marges augmentées pour aérer */
+.back-link {
+    display: flex; align-items: center; gap: 10px;
+    color: #a0a0a0; text-decoration: none; font-size: 0.8rem;
+    padding: 8px 16px; border: 1px solid var(--border-color);
+    border-radius: 4px; transition: 0.3s;
 }
 
-.status-bar { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-fnaf); margin-bottom: 1rem; letter-spacing: 3px; }
-.status-bar .dot { display: inline-block; width: 6px; height: 6px; background: var(--accent-fnaf); border-radius: 50%; margin-right: 8px; animation: blink 1s infinite; }
+.back-link:hover {
+    color: white; border-color: var(--accent-fnaf);
+    box-shadow: 0 0 15px rgba(255, 77, 77, 0.3);
+}
 
-.glitch-text { 
-    font-family: var(--font-mono);
+/* --- LAYOUT GLOBAL --- */
+.project-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+
+.main-header { text-align: center; margin-bottom: 60px; }
+
+.glitch-text {
     font-size: clamp(2rem, 8vw, 4.5rem);
-    margin: 0; 
-    letter-spacing: 8px;
     text-shadow: 3px 0 var(--accent-fnaf), -3px 0 var(--accent-cyan);
+    letter-spacing: 8px; margin: 20px 0;
 }
 
-.subtitle { color: var(--text-gray); font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 2px; opacity: 0.7; }
+.status-tag {
+    font-size: 0.7rem; letter-spacing: 2px; padding: 4px 12px;
+    border: 1px solid var(--border-color); color: var(--accent-fnaf);
+}
 
-/* --- HERO MONITOR (MODIFIÉ : Image plus petite) --- */
-.hero.main-monitor {
-    position: relative;
-    width: fit-content;
-    max-width: 700px; /* Largeur maximale réduite pour la rendre plus petite */
-    margin: 0 auto 7rem; /* Marge du bas augmentée pour aérer */
-    border: 1px solid var(--accent-fnaf);
+.pulse { animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0.2; } }
+
+/* --- MONITOR FRAME (HERO) --- */
+.hero-section { display: flex; justify-content: center; margin-bottom: 80px; }
+
+.monitor-frame {
+    position: relative; width: 100%; max-width: 750px;
+    padding: 12px; background: var(--glass-white);
+    backdrop-filter: blur(20px); border: 1px solid var(--border-color);
     box-shadow: 0 0 40px rgba(255, 77, 77, 0.1);
 }
 
-.hero img { display: block; max-width: 100%; height: auto; }
+.main-img { width: 100%; border-radius: 2px; opacity: 0.9; }
 
-.cam-info { position: absolute; top: 15px; left: 15px; font-family: var(--font-mono); font-size: 0.8rem; color: white; background: rgba(0,0,0,0.6); padding: 4px 10px; }
-.rec-icon { position: absolute; top: 15px; right: 15px; font-family: var(--font-mono); color: var(--accent-fnaf); font-weight: bold; }
-.rec-icon::before { content: "●"; margin-right: 8px; animation: blink 1s infinite; }
-
-/* --- CONTENT LAYOUT (MODIFIÉ : Plus d'espace entre les colonnes) --- */
-.content-layout { 
-    display: grid; 
-    grid-template-columns: 2.2fr 1fr; 
-    gap: 5rem; /* Espace entre les colonnes augmenté */
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 5% 120px;
+.monitor-overlay {
+    position: absolute; top: 20px; left: 20px; right: 20px;
+    display: flex; justify-content: space-between;
+    font-size: 0.7rem; color: #fff; z-index: 5;
 }
 
-.terminal-header { font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-gray); margin-bottom: 0.5rem; opacity: 0.5; }
+.rec-dot { color: var(--accent-fnaf); animation: blink 1s steps(1) infinite; }
 
-.bio-card { 
-    padding: 2.5rem; /* Padding augmenté */
-    margin-bottom: 4rem; /* Marge augmentée */
-    line-height: 1.8; /* Interligne augmenté pour la lisibilité */
-    border-left: 4px solid var(--accent-fnaf); 
+/* --- CONTENT GRID --- */
+.content-grid {
+    display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: start;
 }
 
-/* --- GALLERY (MODIFIÉ : Plus d'espace entre les cartes) --- */
-.gallery { 
-    display: flex; 
-    flex-direction: column; 
-    gap: 4rem; /* Espace entre les cartes augmenté */
+.glass-card {
+    background: var(--glass-white); backdrop-filter: blur(25px);
+    border: 1px solid var(--border-color); padding: 30px;
+    border-radius: 4px; line-height: 1.8; color: #ccc;
 }
 
-.glass-card { 
-    background: var(--glass-bg); 
-    border: 1px solid var(--glass-border); 
-    width: fit-content;
-    display: table;
-}
+.mechanics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
 
-.card-image-grid { display: flex; position: relative; border-bottom: 1px solid var(--glass-border); }
+.tech-card { padding: 0; overflow: hidden; transition: 0.3s; }
+.tech-card:hover { border-color: var(--accent-fnaf); transform: translateY(-5px); }
 
-/* --- IMAGES DE LA GALERIE (MODIFIÉ : Images entières non coupées) --- */
-.card-image-grid img { 
-    width: clamp(200px, 25vw, 400px);
-    height: auto; /* La hauteur s'adapte automatiquement */
-    object-fit: contain; /* L'image entière est visible, sans être coupée */
-    transition: 0.4s;
-    background-color: black; /* Fond noir si le ratio de l'image laisse des vides */
-}
+.card-header { position: relative; height: 180px; border-bottom: 1px solid var(--border-color); }
+.card-header img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
 
-.card-image-grid img:hover { filter: contrast(120%) brightness(1.2); }
+.card-body { padding: 20px; }
+.card-body h3 { color: #fff; margin: 0 0 10px 0; font-size: 1rem; text-transform: uppercase; }
 
-.grid-label { 
-    position: absolute; bottom: 0; left: 0; width: 100%; 
-    background: rgba(0,0,0,0.8); color: var(--accent-fnaf); 
-    font-family: var(--font-mono); font-size: 0.65rem; padding: 10px; 
-}
-
-.card-body { padding: 2rem; /* Padding augmenté */ }
-.card-body h3 { font-family: var(--font-mono); font-size: 1rem; color: white; margin: 0 0 1rem 0; text-transform: uppercase; letter-spacing: 1px; }
-.card-body p { font-size: 0.9rem; color: var(--text-gray); margin: 0; line-height: 1.6; }
-
-/* --- SIDEBAR DIAGNOSTICS --- */
-.sidebar-terminal { position: sticky; top: 40px; } /* Changé 'height: sticky' (invalide) en 'position: sticky' et augmenté le top */
-
-.diagnostics { padding: 2rem; border-top: 4px solid var(--accent-fnaf); }
-.diagnostics h3 { font-family: var(--font-mono); font-size: 0.85rem; margin-bottom: 1.5rem; letter-spacing: 1px; }
-
+/* --- SIDEBAR --- */
 .specs-list { list-style: none; padding: 0; }
-.specs-list li { margin-bottom: 1.5rem; }
-.specs-list strong { display: block; font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-fnaf); margin-bottom: 8px; letter-spacing: 1px; }
-.specs-list span { font-size: 0.85rem; color: #ddd; }
-.status-ok { color: #00ff88 !important; font-weight: bold; letter-spacing: 1px; }
-
-/* --- ANIMATIONS --- */
-@keyframes blink { 50% { opacity: 0; } }
-
-/* --- RESPONSIVE --- */
-@media (max-width: 1000px) {
-    .content-layout { grid-template-columns: 1fr; gap: 3rem; }
-    .card-image-grid { flex-direction: column; }
-    .card-image-grid img { width: 100%; max-width: none; }
-    .hero.main-monitor { max-width: 100%; }
+.specs-list li {
+    display: flex; justify-content: space-between; padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 77, 77, 0.1); font-size: 0.8rem;
 }
 
-/* Bouton Home Style */
-.bottom-nav { position: fixed; bottom: 20px; right: 20px; z-index: 100; }
-.home-btn { 
-    display: flex; padding: 12px; background: var(--glass-bg); 
-    border: 1px solid var(--accent-fnaf); border-radius: 50%; 
-    color: white; transition: 0.3s; 
+.specs-list strong { color: var(--accent-fnaf); font-size: 0.65rem; }
+.ok-text { color: #00ff88 !important; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+
+/* =========================================
+   SECTION : CARROUSEL FAZBEAR RED
+   ========================================= */
+
+.carousel-section {
+    margin-top: 100px;
+    max-width: 100%; 
 }
-.home-btn:hover { background: var(--accent-fnaf); transform: scale(1.1); box-shadow: 0 0 20px var(--accent-fnaf); }
+
+.carousel-container {
+    padding: 20px;
+}
+
+.carousel-viewer {
+    position: relative;
+    border: 1px solid var(--border-color);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.carousel-track-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.carousel-slide {
+    min-width: 100%;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: cover;
+    display: block;
+    /* --- NOUVEAUX RÉGLAGES --- */
+    opacity: 0.85; /* Plus lumineux par défaut (était 0.7) */
+    filter: contrast(100%) brightness(0.9); /* Améliore la netteté */
+    transition: all 0.5s ease; /* Transition fluide pour tous les effets */
+}
+
+
+
+/* Boutons de navigation rouges */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: var(--accent-fnaf);
+    border: 1px solid var(--border-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.5rem;
+    padding: 20px 12px;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+}
+
+.btn-left { left: 0; border-radius: 0 4px 4px 0; }
+.btn-right { right: 0; border-radius: 4px 0 0 4px; }
+
+.carousel-btn:hover {
+    background: rgba(255, 77, 77, 0.2);
+    box-shadow: 0 0 20px rgba(255, 77, 77, 0.4);
+}
+
+/* Description Archives */
+.carousel-caption-box {
+    margin-top: 20px;
+    padding: 20px;
+    border-top: 2px solid var(--border-color);
+    background: rgba(255, 77, 77, 0.02);
+}
+
+.carousel-caption-box h3 {
+    color: var(--accent-fnaf);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.carousel-caption-box p {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
